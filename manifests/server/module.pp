@@ -28,13 +28,14 @@
 #   $log_format         - This parameter allows you to specify the format used
 #    for logging file transfers when transfer logging is enabled. See the
 #    rsyncd.conf documentation for more details.
-#   $log_file         - log messages to the indicated file rather than using syslog
+#   $log_file           - log messages to the indicated file rather than using syslog
 #   $refuse_options     - list of rsync command line options that will be refused by your rsync daemon.
 #   $include            - list of files to include
 #   $include_from       - file containing a list of files to include
 #   $exclude            - list of files to exclude
 #   $exclude_from       - file containing a list of files to exclude
 #   $dont_compress      - disable compression on matching files
+#   $reverse_lookup     - Boolean, if omitted then the rsync default is used
 #
 #   sets up an rsync server
 #
@@ -77,8 +78,9 @@ define rsync::server::module (
   $exclude            = undef,
   $exclude_from       = undef,
   $dont_compress      = undef,
-  $ignore_nonreadable = undef)  {
-
+  $ignore_nonreadable = undef,
+  $reverse_lookup     = undef,
+)  {
   concat::fragment { "frag-${name}":
     content => template('rsync/module.erb'),
     target  => $rsync::server::conf_file,

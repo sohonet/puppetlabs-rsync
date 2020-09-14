@@ -21,6 +21,8 @@ class rsync::server (
   Stdlib::Ensure::Service                $service_ensure = 'running',
   Variant[Boolean, Enum['mask']]         $service_enable = true,
   Boolean                                $manage_package = $rsync::manage_package,
+  Optional[Stdlib::Absolutepath]         $log_file       = undef,
+  Boolean                                $reverse_lookup = true,
 ) inherits rsync {
   if $use_xinetd {
     include xinetd
