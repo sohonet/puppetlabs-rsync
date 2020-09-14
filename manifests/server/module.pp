@@ -80,7 +80,6 @@ define rsync::server::module (
   $exclude_from       = undef,
   $dont_compress      = undef,
   $ignore_nonreadable = undef,
-  $log_file           = undef,
   $reverse_lookup     = undef)  {
 
   concat::fragment { "frag-${name}":
