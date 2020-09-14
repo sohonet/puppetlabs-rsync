@@ -7,14 +7,16 @@
 #   class rsync
 #
 class rsync::server(
-  $use_xinetd = true,
-  $address    = '0.0.0.0',
-  $motd_file  = 'UNSET',
+  $use_xinetd       = true,
+  $address          = '0.0.0.0',
+  $motd_file        = 'UNSET',
   Variant[Enum['UNSET'], Stdlib::Absolutepath] $pid_file = '/var/run/rsyncd.pid',
-  $use_chroot = 'yes',
-  $uid        = 'nobody',
-  $gid        = 'nobody',
-  $modules    = {},
+  $use_chroot       = 'yes',
+  $uid              = 'nobody',
+  $gid              = 'nobody',
+  $log_file         = undef,
+  $reverse_lookup   = undef,
+  $modules          = {},
 ) inherits rsync {
 
   case $facts['os']['family'] {
