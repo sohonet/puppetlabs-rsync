@@ -18,6 +18,6 @@ address = <%= @address %>
 <% if @motd_file != 'UNSET' -%>
 motd file = <%= @motd_file %>
 <% end -%>
-<% if @reverse_lookup -%>
+<% if @reverse_lookup != 'UNSET' -%>
 reverse lookup = <%= @reverse_lookup %>
 <% end -%>

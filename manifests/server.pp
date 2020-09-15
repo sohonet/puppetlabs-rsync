@@ -15,7 +15,7 @@ class rsync::server(
   $uid              = 'nobody',
   $gid              = 'nobody',
   $log_file         = undef,
-  $reverse_lookup   = undef,
+  $reverse_lookup   = 'UNSET',
   $modules          = {},
 ) inherits rsync {
 
